@@ -138,7 +138,8 @@ export function formatCurrency(amount: number, currency: string = 'USD'): string
 /**
  * Format percentage with proper decimal places
  */
-export function formatPercentage(value: number, decimals: number = 2): string {
+export function formatPercentage(value: number | undefined, decimals: number = 2): string {
+  if (value === undefined || isNaN(value)) return '0%';
   return `${value.toFixed(decimals)}%`;
 }
 
@@ -157,28 +158,42 @@ export function calculateSharpeRatio(
 /**
  * Generate mock stock data for demonstration
  */
-export function generateMockStockData(days: number = 30) {
+export function generateMockStockData(days: number = 30, seed?: number) {
   const data = [];
   const basePrice = 150;
   let currentPrice = basePrice;
   const today = new Date();
+  
+  // Use seed for deterministic generation if provided
+  let random = seed !== undefined ? seededRandom(seed) : Math.random;
 
   for (let i = days; i >= 0; i--) {
     const date = new Date(today);
     date.setDate(date.getDate() - i);
     
-    // Simulate realistic price movement
-    const change = (Math.random() - 0.5) * 8;
+    // Simulate realistic price movement with deterministic approach
+    const change = (random() - 0.5) * 8;
     currentPrice = Math.max(currentPrice + change, basePrice * 0.7);
     
     data.push({
       date: date.toISOString().split('T')[0],
       price: Number(currentPrice.toFixed(2)),
-      volume: Math.floor(Math.random() * 1000000) + 500000,
+      volume: Math.floor(random() * 1000000) + 500000,
     });
   }
 
   return data;
+}
+
+/**
+ * Seeded random number generator for deterministic results
+ */
+function seededRandom(seed: number): () => number {
+  let value = seed;
+  return function() {
+    value = (value * 9301 + 49297) % 233280;
+    return value / 233280;
+  };
 }
 
 /**

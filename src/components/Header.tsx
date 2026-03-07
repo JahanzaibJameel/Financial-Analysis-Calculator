@@ -148,26 +148,22 @@ export default function Header() {
 
             {/* Social Links */}
             <div className="hidden lg:flex items-center space-x-2">
-              <Button variant="ghost" size="sm" asChild>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="sm" asChild>
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2"
-                >
-                  <Twitter className="w-4 h-4" />
-                </a>
-              </Button>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-3 p-2"
+              >
+                <Github className="w-4 h-4" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-9 px-3 p-2"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
             </div>
 
             {/* Mobile Menu Toggle */}

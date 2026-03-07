@@ -45,7 +45,7 @@ apiClient.interceptors.response.use(
         case 401:
           throw new Error('Unauthorized: Please check your API credentials');
         case 429:
-          throw new Error('Rate limit exceeded. Please try again later');
+          throw new Error('Rate limit exceeded. Please wait a moment before trying again or check your OpenAI API quota.');
         case 500:
           throw new Error('Server error. Please try again later');
         default:
