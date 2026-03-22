@@ -1,0 +1,151 @@
+{
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "export": "Exportar",
+    "import": "Importar",
+    "refresh": "Actualizar",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "privacy": "Privacidad",
+    "terms": "Términos"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "calculator": "Calculadora",
+    "dashboard": "Panel",
+    "chatbot": "Asistente IA",
+    "theme": "Tema",
+    "language": "Idioma"
+  },
+  "calculator": {
+    "title": "Calculadora de Interés Compuesto",
+    "subtitle": "Calcule el crecimiento de su inversión con interés compuesto",
+    "principal": "Monto Principal",
+    "principalPlaceholder": "Ingrese el monto principal",
+    "rate": "Tasa de Interés Anual",
+    "ratePlaceholder": "Tasa de interés anual (%)",
+    "years": "Número de Años",
+    "yearsPlaceholder": "Número de años",
+    "frequency": "Frecuencia de Capitalización",
+    "calculate": "Calcular",
+    "results": {
+      "finalAmount": "Monto Final",
+      "totalInterest": "Interés Total",
+      "roi": "Retorno de Inversión",
+      "yearlyBreakdown": "Desglose Anual"
+    },
+    "export": {
+      "button": "Exportar Resultados",
+      "filename": "calculo-financiero",
+      "success": "Resultados exportados exitosamente"
+    }
+  },
+  "dashboard": {
+    "title": "Panel de Mercado de Acciones",
+    "subtitle": "Análisis e insights del mercado en tiempo real",
+    "timeRange": "Rango de Tiempo",
+    "ranges": {
+      "7d": "7 Días",
+      "30d": "30 Días",
+      "90d": "90 Días",
+      "1y": "1 Año"
+    },
+    "features": {
+      "movingAverage": "Media Móvil",
+      "volume": "Volumen",
+      "trends": "Tendencias",
+      "analysis": "Análisis"
+    },
+    "metrics": {
+      "currentPrice": "Precio Actual",
+      "change": "Cambio",
+      "volume": "Volumen",
+      "marketCap": "Capitalización de Mercado",
+      "peRatio": "Ratio P/E"
+    }
+  },
+  "chatbot": {
+    "title": "Asistente Financiero IA",
+    "subtitle": "Obtenga guía financiera personalizada",
+    "placeholder": "Pregúnteme cualquier cosa sobre finanzas...",
+    "send": "Enviar",
+    "mockMode": "Modo Simulado",
+    "liveMode": "Modo En Vivo",
+    "welcome": {
+      "greeting": "👋 ¡Hola! Soy tu asistente financiero de IA. Puedo ayudarte con:",
+      "investment": "📊 Análisis de Inversión",
+      "investmentItems": "Insights de rendimiento de cartera, Guía de evaluación de riesgo, Estrategias de asignación de activos",
+      "concepts": "💡 Conceptos Financieros",
+      "conceptsItems": "Terminología de inversión explicada, Análisis de tendencias del mercado, Indicadores económicos",
+      "guidance": "🎯 Orientación Personalizada",
+      "guidanceItems": "Planificación basada en objetivos, Estrategias de jubilación, Inversión eficiente en impuestos",
+      "disclaimer": "*Tenga en cuenta: Proporciono información educativa y no debe considerarse como asesoramiento financiero personalizado. Siempre consulte con profesionales calificados para decisiones financieras importantes.*",
+      "question": "¿Cómo puedo ayudarte hoy?"
+    },
+    "suggestions": {
+      "compound": "Explicar interés compuesto",
+      "diversify": "¿Cómo diversificar cartera?",
+      "risk": "Estrategias de gestión de riesgo",
+      "retirement": "Conceptos básicos de jubilación"
+    },
+    "typing": "La IA está escribiendo...",
+    "error": "Error al enviar mensaje. Inténtelo de nuevo."
+  },
+  "theme": {
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "toggle": "Cambiar tema"
+  },
+  "errors": {
+    "network": "Error de red. Verifique su conexión.",
+    "server": "Error del servidor. Inténtelo más tarde.",
+    "validation": "Verifique su entrada e intente nuevamente.",
+    "unknown": "Ocurrió un error desconocido.",
+    "calculation": "Error en el cálculo. Verifique sus entradas."
+  },
+  "accessibility": {
+    "skipToContent": "Saltar al contenido principal",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "previousSlide": "Diapositiva anterior",
+    "nextSlide": "Siguiente diapositiva",
+    "playVideo": "Reproducir video",
+    "pauseVideo": "Pausar video",
+    "increaseVolume": "Aumentar volumen",
+    "decreaseVolume": "Disminuir volumen",
+    "mute": "Silenciar",
+    "unmute": "Activar sonido"
+  },
+  "performance": {
+    "score": "Puntuación de Rendimiento",
+    "metrics": "Métricas Web Principales",
+    "cls": "Desplazamiento de Layout Acumulado",
+    "fid": "Retraso de Primera Entrada",
+    "fcp": "Primera Pintura con Contenido",
+    "lcp": "Pintura de Contenido Más Grande",
+    "ttfb": "Tiempo al Primer Byte",
+    "excellent": "Excelente",
+    "good": "Bueno",
+    "needsImprovement": "Necesita Mejora",
+    "poor": "Pobre"
+  },
+  "seo": {
+    "title": "Calculadora de Análisis Financiero - Herramientas de Inversión e Insights del Mercado",
+    "description": "Herramientas profesionales de análisis financiero que incluyen calculadora de interés compuesto, panel de mercado de acciones y asistente financiero con IA. Tome decisiones de inversión informadas.",
+    "keywords": "calculadora financiera, interés compuesto, análisis de acciones, herramientas de inversión, planificación financiera, insights del mercado",
+    "author": "Equipo de Análisis Financiero"
+  }
+}

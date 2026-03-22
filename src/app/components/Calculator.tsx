@@ -1,13 +1,14 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { Calculator, TrendingUp, DollarSign, Calendar, Percent } from 'lucide-react';
-import { calculateCompoundInterest, formatCurrency, formatPercentage, CalculationResult } from '@/utils/finance';
-import { useTheme } from '@/components/ThemeProvider';
+import {
+  calculateCompoundInterest,
+  formatCurrency,
+  formatPercentage,
+  CalculationResult,
+} from '@/utils/finance';
 
 export default function FinancialCalculator() {
-  const { resolvedTheme } = useTheme();
   const [principal, setPrincipal] = useState(10000);
   const [rate, setRate] = useState(7);
   const [years, setYears] = useState(10);
@@ -29,7 +30,9 @@ export default function FinancialCalculator() {
       timestamp: new Date().toISOString(),
     };
 
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const blob = new Blob([JSON.stringify(data, null, 2)], {
+      type: 'application/json',
+    });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -43,7 +46,7 @@ export default function FinancialCalculator() {
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+        <h2 className="mb-4 text-3xl font-bold text-gray-900 dark:text-white">
           Compound Interest Calculator
         </h2>
         <p className="text-gray-600 dark:text-gray-300">
@@ -51,14 +54,14 @@ export default function FinancialCalculator() {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid gap-8 lg:grid-cols-2">
         {/* Input Controls */}
         <div className="space-y-6">
-          <div className="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 space-y-4">
+          <div className="space-y-4 rounded-2xl bg-gray-50 p-6 dark:bg-gray-800/50">
             <div>
-              <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
                 <span>Principal Amount</span>
-                <span className="text-blue-600 dark:text-blue-400 font-semibold">
+                <span className="font-semibold text-blue-600 dark:text-blue-400">
                   ${principal.toLocaleString()}
                 </span>
               </label>
@@ -68,8 +71,8 @@ export default function FinancialCalculator() {
                 max="1000000"
                 step="1000"
                 value={principal}
-                onChange={(e) => setPrincipal(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+                onChange={e => setPrincipal(Number(e.target.value))}
+                className="slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
               />
               <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
                 <span>$1,000</span>
@@ -78,9 +81,9 @@ export default function FinancialCalculator() {
             </div>
 
             <div>
-              <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
                 <span>Annual Interest Rate</span>
-                <span className="text-blue-600 dark:text-blue-400 font-semibold">
+                <span className="font-semibold text-blue-600 dark:text-blue-400">
                   {rate}%
                 </span>
               </label>
@@ -90,8 +93,8 @@ export default function FinancialCalculator() {
                 max="30"
                 step="0.1"
                 value={rate}
-                onChange={(e) => setRate(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+                onChange={e => setRate(Number(e.target.value))}
+                className="slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
               />
               <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
                 <span>0.1%</span>
@@ -100,9 +103,9 @@ export default function FinancialCalculator() {
             </div>
 
             <div>
-              <label className="flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 flex items-center justify-between text-sm font-medium text-gray-700 dark:text-gray-300">
                 <span>Investment Period</span>
-                <span className="text-blue-600 dark:text-blue-400 font-semibold">
+                <span className="font-semibold text-blue-600 dark:text-blue-400">
                   {years} years
                 </span>
               </label>
@@ -112,8 +115,8 @@ export default function FinancialCalculator() {
                 max="50"
                 step="1"
                 value={years}
-                onChange={(e) => setYears(Number(e.target.value))}
-                className="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer slider"
+                onChange={e => setYears(Number(e.target.value))}
+                className="slider h-2 w-full cursor-pointer appearance-none rounded-lg bg-gray-200 dark:bg-gray-700"
               />
               <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
                 <span>1 year</span>
@@ -122,7 +125,7 @@ export default function FinancialCalculator() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                 Compound Frequency
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -131,16 +134,15 @@ export default function FinancialCalculator() {
                   { value: 2, label: 'Semi-annually' },
                   { value: 4, label: 'Quarterly' },
                   { value: 12, label: 'Monthly' },
-                ].map((freq) => (
+                ].map(freq => (
                   <button
                     key={freq.value}
                     onClick={() => setCompoundFrequency(freq.value)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    className={`rounded-lg px-4 py-2 font-medium transition-all ${
                       compoundFrequency === freq.value
                         ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-                    }`}
-                  >
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                    }`}>
                     {freq.label}
                   </button>
                 ))}
@@ -150,67 +152,86 @@ export default function FinancialCalculator() {
 
           <button
             onClick={handleExport}
-            className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-lg transform hover:scale-105 transition-all duration-200"
-          >
+            className="w-full transform rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-lg">
             Export Results as JSON
           </button>
         </div>
 
         {/* Results Display */}
         <div className="space-y-6">
-          <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-6 text-white">
-            <h3 className="text-lg font-semibold mb-4">Investment Summary</h3>
+          <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 p-6 text-white">
+            <h3 className="mb-4 text-lg font-semibold">Investment Summary</h3>
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="opacity-90">Initial Investment:</span>
-                <span className="font-semibold">{formatCurrency(principal)}</span>
+                <span className="font-semibold">
+                  {formatCurrency(principal)}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="opacity-90">Final Amount:</span>
-                <span className="font-semibold text-xl">{formatCurrency(calculation.finalAmount)}</span>
+                <span className="text-xl font-semibold">
+                  {formatCurrency(calculation.finalAmount)}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="opacity-90">Total Interest:</span>
-                <span className="font-semibold">{formatCurrency(calculation.totalInterest)}</span>
+                <span className="font-semibold">
+                  {formatCurrency(calculation.totalInterest)}
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="opacity-90">Total Return:</span>
-                <span className="font-semibold">{formatPercentage(calculation.roi)}</span>
+                <span className="font-semibold">
+                  {formatPercentage(calculation.roi)}
+                </span>
               </div>
             </div>
           </div>
 
           {/* Yearly Breakdown */}
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700">
+          <div className="rounded-2xl border border-gray-100 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-800">
             <div className="p-6">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+              <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
                 Yearly Breakdown
               </h3>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-gray-200 dark:border-gray-700">
-                      <th className="text-left py-2 text-gray-600 dark:text-gray-400">Year</th>
-                      <th className="text-right py-2 text-gray-600 dark:text-gray-400">Balance</th>
-                      <th className="text-right py-2 text-gray-600 dark:text-gray-400">Interest</th>
+                      <th className="py-2 text-left text-gray-600 dark:text-gray-400">
+                        Year
+                      </th>
+                      <th className="py-2 text-right text-gray-600 dark:text-gray-400">
+                        Balance
+                      </th>
+                      <th className="py-2 text-right text-gray-600 dark:text-gray-400">
+                        Interest
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
-                    {calculation.yearlyBreakdown.slice(0, 10).map((year, index) => (
-                      <tr key={index} className="border-b border-gray-100 dark:border-gray-800">
-                        <td className="py-2 text-gray-900 dark:text-white">{year.year}</td>
-                        <td className="text-right py-2 text-gray-900 dark:text-white">
-                          {formatCurrency(year.balance)}
-                        </td>
-                        <td className="text-right py-2 text-green-600 dark:text-green-400">
-                          +{formatCurrency(year.interest)}
-                        </td>
-                      </tr>
-                    ))}
+                    {calculation.yearlyBreakdown
+                      .slice(0, 10)
+                      .map((year, index) => (
+                        <tr
+                          key={index}
+                          className="border-b border-gray-100 dark:border-gray-800">
+                          <td className="py-2 text-gray-900 dark:text-white">
+                            {year.year}
+                          </td>
+                          <td className="py-2 text-right text-gray-900 dark:text-white">
+                            {formatCurrency(year.balance)}
+                          </td>
+                          <td className="py-2 text-right text-green-600 dark:text-green-400">
+                            +{formatCurrency(year.interest)}
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
                 {calculation.yearlyBreakdown.length > 10 && (
-                  <div className="text-center py-2 text-sm text-gray-500 dark:text-gray-400">
+                  <div className="py-2 text-center text-sm text-gray-500 dark:text-gray-400">
                     ... and {calculation.yearlyBreakdown.length - 10} more years
                   </div>
                 )}

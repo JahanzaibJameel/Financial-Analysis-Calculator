@@ -1,0 +1,151 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "export": "Export",
+    "import": "Import",
+    "refresh": "Refresh",
+    "settings": "Settings",
+    "help": "Help",
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "navigation": {
+    "home": "Home",
+    "calculator": "Calculator",
+    "dashboard": "Dashboard",
+    "chatbot": "AI Assistant",
+    "theme": "Theme",
+    "language": "Language"
+  },
+  "calculator": {
+    "title": "Compound Interest Calculator",
+    "subtitle": "Calculate your investment growth with compound interest",
+    "principal": "Principal Amount",
+    "principalPlaceholder": "Enter principal amount",
+    "rate": "Annual Interest Rate",
+    "ratePlaceholder": "Annual interest rate (%)",
+    "years": "Number of Years",
+    "yearsPlaceholder": "Number of years",
+    "frequency": "Compound Frequency",
+    "calculate": "Calculate",
+    "results": {
+      "finalAmount": "Final Amount",
+      "totalInterest": "Total Interest",
+      "roi": "Return on Investment",
+      "yearlyBreakdown": "Yearly Breakdown"
+    },
+    "export": {
+      "button": "Export Results",
+      "filename": "financial-calculation",
+      "success": "Results exported successfully"
+    }
+  },
+  "dashboard": {
+    "title": "Stock Market Dashboard",
+    "subtitle": "Real-time market analysis and insights",
+    "timeRange": "Time Range",
+    "ranges": {
+      "7d": "7 Days",
+      "30d": "30 Days",
+      "90d": "90 Days",
+      "1y": "1 Year"
+    },
+    "features": {
+      "movingAverage": "Moving Average",
+      "volume": "Volume",
+      "trends": "Trends",
+      "analysis": "Analysis"
+    },
+    "metrics": {
+      "currentPrice": "Current Price",
+      "change": "Change",
+      "volume": "Volume",
+      "marketCap": "Market Cap",
+      "peRatio": "P/E Ratio"
+    }
+  },
+  "chatbot": {
+    "title": "AI Financial Assistant",
+    "subtitle": "Get personalized financial guidance",
+    "placeholder": "Ask me anything about finance...",
+    "send": "Send",
+    "mockMode": "Mock Mode",
+    "liveMode": "Live Mode",
+    "welcome": {
+      "greeting": "👋 Hello! I'm your AI financial assistant. I can help you with:",
+      "investment": "📊 Investment Analysis",
+      "investmentItems": "Portfolio performance insights, Risk assessment guidance, Asset allocation strategies",
+      "concepts": "💡 Financial Concepts",
+      "conceptsItems": "Investment terminology explained, Market trend analysis, Economic indicators",
+      "guidance": "🎯 Personalized Guidance",
+      "guidanceItems": "Goal-based planning, Retirement strategies, Tax-efficient investing",
+      "disclaimer": "*Please note: I provide educational information and should not be considered as personalized financial advice. Always consult with qualified professionals for important financial decisions.*",
+      "question": "How can I help you today?"
+    },
+    "suggestions": {
+      "compound": "Explain compound interest",
+      "diversify": "How to diversify portfolio?",
+      "risk": "Risk management strategies",
+      "retirement": "Retirement planning basics"
+    },
+    "typing": "AI is typing...",
+    "error": "Failed to send message. Please try again."
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "toggle": "Toggle theme"
+  },
+  "errors": {
+    "network": "Network error. Please check your connection.",
+    "server": "Server error. Please try again later.",
+    "validation": "Please check your input and try again.",
+    "unknown": "An unknown error occurred.",
+    "calculation": "Error in calculation. Please check your inputs."
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "playVideo": "Play video",
+    "pauseVideo": "Pause video",
+    "increaseVolume": "Increase volume",
+    "decreaseVolume": "Decrease volume",
+    "mute": "Mute",
+    "unmute": "Unmute"
+  },
+  "performance": {
+    "score": "Performance Score",
+    "metrics": "Core Web Vitals",
+    "cls": "Cumulative Layout Shift",
+    "fid": "First Input Delay",
+    "fcp": "First Contentful Paint",
+    "lcp": "Largest Contentful Paint",
+    "ttfb": "Time to First Byte",
+    "excellent": "Excellent",
+    "good": "Good",
+    "needsImprovement": "Needs Improvement",
+    "poor": "Poor"
+  },
+  "seo": {
+    "title": "Financial Analysis Calculator - Investment Tools & Market Insights",
+    "description": "Professional financial analysis tools including compound interest calculator, stock market dashboard, and AI-powered financial assistant. Make informed investment decisions.",
+    "keywords": "financial calculator, compound interest, stock analysis, investment tools, financial planning, market insights",
+    "author": "Financial Analysis Team"
+  }
+}

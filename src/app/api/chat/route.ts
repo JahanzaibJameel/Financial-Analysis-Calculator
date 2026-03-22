@@ -8,9 +8,9 @@ const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour in milliseconds
 
 function getClientId(request: NextRequest): string {
   const forwarded = request.headers.get('x-forwarded-for');
-  const ip = forwarded ? forwarded.split(',')[0] : 
-             request.headers.get('x-real-ip') || 
-             'unknown';
+  const ip = forwarded
+    ? forwarded.split(',')[0]
+    : request.headers.get('x-real-ip') || 'unknown';
   return ip;
 }
 
@@ -57,11 +57,18 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate message structure
-    const isValidMessage = (msg: any): msg is OpenAIMessage => {
-      return typeof msg === 'object' &&
-             typeof msg.role === 'string' &&
-             ['user', 'assistant', 'system'].includes(msg.role) &&
-             typeof msg.content === 'string';
+    const isValidMessage = (msg: unknown): msg is OpenAIMessage => {
+      return (
+        typeof msg === 'object' &&
+        msg !== null &&
+        'role' in msg &&
+        typeof (msg as { role: unknown }).role === 'string' &&
+        ['user', 'assistant', 'system'].includes(
+          (msg as { role: string }).role
+        ) &&
+        'content' in msg &&
+        typeof (msg as { content: unknown }).content === 'string'
+      );
     };
 
     if (!messages.every(isValidMessage)) {
@@ -75,7 +82,6 @@ export async function POST(request: NextRequest) {
     const response = await openaiAPI.chat(messages);
 
     return NextResponse.json({ response });
-
   } catch (error) {
     console.error('Chat API error:', error);
 
@@ -87,21 +93,21 @@ export async function POST(request: NextRequest) {
           { status: 500 }
         );
       }
-      
+
       if (error.message.includes('rate limit')) {
         return NextResponse.json(
           { error: 'OpenAI API rate limit exceeded' },
           { status: 429 }
         );
       }
-      
+
       if (error.message.includes('quota')) {
         return NextResponse.json(
           { error: 'OpenAI API quota exceeded' },
           { status: 429 }
         );
       }
-      
+
       if (error.message.includes('Network')) {
         return NextResponse.json(
           { error: 'Network connection error' },

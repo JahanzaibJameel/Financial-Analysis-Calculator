@@ -20,6 +20,7 @@ export function calculateCompoundInterest(
   principal: number,
   annualRate: number,
   years: number,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   compoundFrequency: number = 1
 ): CalculationResult {
   const rate = annualRate / 100;
@@ -126,7 +127,10 @@ export function calculateAnnuityFutureValue(
 /**
  * Format currency with proper locale formatting
  */
-export function formatCurrency(amount: number, currency: string = 'USD'): string {
+export function formatCurrency(
+  amount: number,
+  currency: string = 'USD'
+): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency,
@@ -138,7 +142,10 @@ export function formatCurrency(amount: number, currency: string = 'USD'): string
 /**
  * Format percentage with proper decimal places
  */
-export function formatPercentage(value: number | undefined, decimals: number = 2): string {
+export function formatPercentage(
+  value: number | undefined,
+  decimals: number = 2
+): string {
   if (value === undefined || isNaN(value)) return '0%';
   return `${value.toFixed(decimals)}%`;
 }
@@ -163,18 +170,18 @@ export function generateMockStockData(days: number = 30, seed?: number) {
   const basePrice = 150;
   let currentPrice = basePrice;
   const today = new Date();
-  
+
   // Use seed for deterministic generation if provided
-  let random = seed !== undefined ? seededRandom(seed) : Math.random;
+  const random = seed !== undefined ? seededRandom(seed) : Math.random;
 
   for (let i = days; i >= 0; i--) {
     const date = new Date(today);
     date.setDate(date.getDate() - i);
-    
+
     // Simulate realistic price movement with deterministic approach
     const change = (random() - 0.5) * 8;
     currentPrice = Math.max(currentPrice + change, basePrice * 0.7);
-    
+
     data.push({
       date: date.toISOString().split('T')[0],
       price: Number(currentPrice.toFixed(2)),
@@ -190,7 +197,7 @@ export function generateMockStockData(days: number = 30, seed?: number) {
  */
 function seededRandom(seed: number): () => number {
   let value = seed;
-  return function() {
+  return function () {
     value = (value * 9301 + 49297) % 233280;
     return value / 233280;
   };
@@ -199,14 +206,17 @@ function seededRandom(seed: number): () => number {
 /**
  * Calculate moving average
  */
-export function calculateMovingAverage(data: number[], period: number): number[] {
+export function calculateMovingAverage(
+  data: number[],
+  period: number
+): number[] {
   const result: number[] = [];
-  
+
   for (let i = period - 1; i < data.length; i++) {
     const sum = data.slice(i - period + 1, i + 1).reduce((a, b) => a + b, 0);
     result.push(sum / period);
   }
-  
+
   return result;
 }
 
@@ -215,14 +225,16 @@ export function calculateMovingAverage(data: number[], period: number): number[]
  */
 export function calculateVolatility(prices: number[]): number {
   if (prices.length < 2) return 0;
-  
+
   const returns = [];
   for (let i = 1; i < prices.length; i++) {
     returns.push((prices[i] - prices[i - 1]) / prices[i - 1]);
   }
-  
+
   const mean = returns.reduce((a, b) => a + b, 0) / returns.length;
-  const variance = returns.reduce((sum, ret) => sum + Math.pow(ret - mean, 2), 0) / returns.length;
-  
+  const variance =
+    returns.reduce((sum, ret) => sum + Math.pow(ret - mean, 2), 0) /
+    returns.length;
+
   return Math.sqrt(variance) * Math.sqrt(252); // Annualized volatility
 }

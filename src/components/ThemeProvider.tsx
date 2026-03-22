@@ -1,6 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from 'react';
 
 export type Theme = 'light' | 'dark' | 'system';
 
@@ -17,28 +23,33 @@ interface Props {
 }
 
 export default function ThemeProvider({ children }: Props) {
-  const [theme, setTheme] = useState<Theme>('system');
-  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
-
-  useEffect(() => {
-    const stored = localStorage.getItem('theme') as Theme;
+  // Initialize theme lazily to avoid setState in useEffect
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window === 'undefined') return 'system';
+    const stored = localStorage.getItem('theme');
     if (stored && ['light', 'dark', 'system'].includes(stored)) {
-      setTheme(stored);
+      return stored as Theme;
     }
-  }, []);
+    return 'system';
+  });
+
+  const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
     const updateTheme = () => {
       let newResolvedTheme: 'light' | 'dark';
-      
+
       if (theme === 'system') {
-        newResolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        newResolvedTheme = window.matchMedia('(prefers-color-scheme: dark)')
+          .matches
+          ? 'dark'
+          : 'light';
       } else {
         newResolvedTheme = theme;
       }
 
       setResolvedTheme(newResolvedTheme);
-      
+
       const root = document.documentElement;
       root.classList.remove('light', 'dark');
       root.classList.add(newResolvedTheme);
